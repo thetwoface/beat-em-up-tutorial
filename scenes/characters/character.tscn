@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cqyptf52nwi4y"]
+
+[ext_resource type="Script" uid="uid://dvlk44t7eb4k4" path="res://scenes/characters/character.gd" id="1_1bdar"]
+[ext_resource type="Texture2D" uid="uid://bfq70l22hd7u3" path="res://assets/art/characters/shadow.png" id="1_x31xa"]
+[ext_resource type="PackedScene" uid="uid://c1pyckj57l1dq" path="res://scenes/colliders/damage_emitter.tscn" id="3_e22cc"]
+[ext_resource type="PackedScene" uid="uid://ipfcoena5u0i" path="res://scenes/colliders/damage_receiver.tscn" id="4_2qjml"]
+
+[node name="Character" type="CharacterBody2D" unique_id=764330052]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_1bdar")
+speed = 5.0
+
+[node name="ShadowSprite" type="Sprite2D" parent="." unique_id=15768651]
+texture = ExtResource("1_x31xa")
+centered = false
+offset = Vector2(-7, 0)
+
+[node name="CharacterSprite" type="Sprite2D" parent="." unique_id=1729336614]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1451695247]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2134796283]
+
+[node name="DamageEmitter" parent="." unique_id=2075159977 instance=ExtResource("3_e22cc")]
+
+[node name="DamageReceiver" parent="." unique_id=468155778 instance=ExtResource("4_2qjml")]
+
+[editable path="DamageEmitter"]
+[editable path="DamageReceiver"]

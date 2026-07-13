@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://d2qh300jm52sj"]
+
+[ext_resource type="PackedScene" uid="uid://cykbdd3lelpnv" path="res://scenes/stage/stage.tscn" id="1_f3sb7"]
+[ext_resource type="Script" uid="uid://p4k5ap3kev0j" path="res://world.gd" id="1_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://7nypr6uef4gm" path="res://scenes/characters/player.tscn" id="2_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://itqyiw5jxg13" path="res://scenes/props/barrel.tscn" id="4_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://lrxoe6pc32lr" path="res://scenes/characters/basic_enemy.tscn" id="5_036b0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwgri"]
+size = Vector2(6, 64)
+
+[node name="World" type="Node2D" unique_id=1270488956]
+script = ExtResource("1_tlwt5")
+
+[node name="Stage" parent="." unique_id=733621202 instance=ExtResource("1_f3sb7")]
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1939828082]
+position = Vector2(50, 32)
+
+[node name="InvisibleWalls" type="Node2D" parent="Camera" unique_id=2087838877]
+position = Vector2(-50, -32)
+
+[node name="LeftWall" type="StaticBody2D" parent="Camera/InvisibleWalls" unique_id=858339014]
+position = Vector2(0, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera/InvisibleWalls/LeftWall" unique_id=373962772]
+shape = SubResource("RectangleShape2D_pwgri")
+
+[node name="RightWall" type="StaticBody2D" parent="Camera/InvisibleWalls" unique_id=869599726]
+position = Vector2(100, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera/InvisibleWalls/RightWall" unique_id=580485417]
+shape = SubResource("RectangleShape2D_pwgri")
+
+[node name="ActorsContainer" type="Node2D" parent="." unique_id=433560053]
+y_sort_enabled = true
+
+[node name="Player" parent="ActorsContainer" unique_id=764330052 instance=ExtResource("2_fj7yv")]
+position = Vector2(42, 45)
+
+[node name="Barrel" parent="ActorsContainer" unique_id=1532448640 instance=ExtResource("4_aqk2v")]
+position = Vector2(76, 47)
+
+[node name="BasicEnemy" parent="ActorsContainer" unique_id=1414037411 node_paths=PackedStringArray("player") instance=ExtResource("5_036b0")]
+position = Vector2(72, 59)
+player = NodePath("../Player")
+
+[node name="BasicEnemy2" parent="ActorsContainer" unique_id=1210874794 node_paths=PackedStringArray("player") instance=ExtResource("5_036b0")]
+position = Vector2(16, 57)
+player = NodePath("../Player")
+
+[node name="BasicEnemy3" parent="ActorsContainer" unique_id=472138109 node_paths=PackedStringArray("player") instance=ExtResource("5_036b0")]
+position = Vector2(93, 61)
+player = NodePath("../Player")
+
+[node name="BasicEnemy4" parent="ActorsContainer" unique_id=1276555166 node_paths=PackedStringArray("player") instance=ExtResource("5_036b0")]
+position = Vector2(92, 33)
+player = NodePath("../Player")
+
+[node name="BasicEnemy5" parent="ActorsContainer" unique_id=922107553 node_paths=PackedStringArray("player") instance=ExtResource("5_036b0")]
+position = Vector2(70, 29)
+player = NodePath("../Player")
